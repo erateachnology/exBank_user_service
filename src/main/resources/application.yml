@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: user
+  config:
+    import: optional:configserver:http://localhost:8001
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/exBank
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+management:
+  info:
+    env:
+      enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
+info:
+  app:
+    name: User Service
+    description: User microservice
+    version: 1.0.0
+endpoints:
+  shutdown:
+    enabled: true
+server:
+  port: 8005
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8002/eureka/
